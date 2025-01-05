@@ -1,34 +1,40 @@
 #pragma once
+#include <iostream>
+#include <fstream>
+#include <filesystem>
 #include <unordered_map>
 #include <vector>
-#include <filesystem>
+#include <string>
 #include <mutex>
-#include <fstream>
-#include <sstream>
-#include <iostream>
-#include <chrono>
+#include <queue>
+#include <condition_variable>
 
 namespace fs = std::filesystem;
 
-// Timer-Klasse für die Laufzeitmessung (Debug-Modus)
-class Timer {
-public:
-    Timer(const std::string& task);
-    ~Timer();
-
-private:
-    std::string task_;
-    std::chrono::time_point<std::chrono::high_resolution_clock> start_time_;
-};
+// Logging (nur im Debug-Modus)
+#ifdef _DEBUG
+#define LOG(msg) std::cout << "[DEBUG]: " << msg << std::endl
+#else
+#define LOG(msg)
+#endif
 
 class DuplicateFinder {
 public:
-    void ScanDirectory(const fs::path& path);
-    void PrintDuplicates(const fs::path& outputFilePath);
+    void findDuplicates(const std::string& path);
+    void writeResults(const std::string& outputFile);
 
 private:
-    std::unordered_map<std::string, std::unordered_map<std::string, std::vector<fs::path>>> duplicates_;
-    std::mutex mutex_;
+    std::unordered_map<std::string, std::vector<std::pair<fs::path, uintmax_t>>> duplicates;
+    std::mutex mtx;
 
-    std::string CalculateHash(const fs::path& filePath);
+    std::string calculateFileHash(const fs::path& filePath);
+    void processFile(const fs::path& filePath);
+
+    // Multithreading
+    std::queue<fs::path> fileQueue;
+    std::mutex queueMutex;
+    std::condition_variable cv;
+    bool done = false;
+
+    void worker();
 };

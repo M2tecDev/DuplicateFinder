@@ -1,74 +1,135 @@
-# 📄 **Duplicate Finder**
 
-## 📚 **Inhaltsverzeichnis / Table of Contents**
-- [Über das Projekt / About the Project](#über-das-projekt--about-the-project)  
+# 📂 DuplicateFinder
+
+## 📝 Inhaltsverzeichnis / Table of Contents  
+- [Beschreibung / Description](#beschreibung--description)  
 - [Funktionen / Features](#funktionen--features)  
 - [Systemanforderungen / System Requirements](#systemanforderungen--system-requirements)  
-- [Installation und Verwendung / Installation and Usage](#installation-und-verwendung--installation-and-usage)  
+- [Installation und Ausführung / Installation and Usage](#installation-und-ausführung--installation-and-usage)  
 - [Beispielausgabe / Example Output](#beispielausgabe--example-output)  
 - [Lizenz / License](#lizenz--license)  
 
 ---
 
-## 🛠️ **Über das Projekt / About the Project**
+## 📖 Beschreibung / Description  
 
 **Deutsch:**  
-Dieses Projekt ist ein leistungsfähiges Konsolen-Tool, das doppelte Dateien basierend auf ihrem **Dateinamen** erkennt und deren Pfade in einer übersichtlichen Textdatei ausgibt. Es unterstützt sowohl rekursives Scannen von Ordnern als auch Multithreading für optimale Leistung.
+DuplicateFinder ist ein Konsolenprogramm, das nach doppelten Dateien sucht, indem es die Inhalte der Dateien vergleicht. Es verwendet Multithreading für schnelle Verarbeitung und unterstützt rekursive Verzeichnisscans. Ergebnisse werden in einer Textdatei (`duplicates.txt`) gespeichert.  
 
 **English:**  
-This project is a powerful console tool designed to identify duplicate files based on their **file names** and output their paths into a clear text file. It supports both recursive folder scanning and multithreading for optimal performance.
+DuplicateFinder is a console application that scans for duplicate files by comparing file contents. It uses multithreading for fast processing and supports recursive directory scans. Results are saved in a text file (`duplicates.txt`).  
 
 ---
 
-## 🚀 **Funktionen / Features**
+## 🚀 Funktionen / Features  
 
-- 🔍 **Rekursives Scannen von Verzeichnissen / Recursive Directory Scanning**  
-- ⚡ **Multithreading für bessere Performance / Multithreading for Improved Performance**  
-- 📄 **Ausgabe in eine Textdatei (`duplicates.txt`) / Output to a Text File (`duplicates.txt`)**  
-- 🕒 **Timer für Debug-Performance-Messungen / Timer for Debug Performance Measurements**  
-- 🛡️ **Unterstützung von Windows 8, 10, 11 / Support for Windows 8, 10, 11**  
+**Deutsch:**  
+- Multithreaded Dateisuche für maximale Geschwindigkeit  
+- Hash-basierte Duplikaterkennung  
+- Ausgabe von Duplikaten in einer übersichtlichen Textdatei  
+- Unterstützung von rekursiven Scans in Verzeichnissen  
+- Ausgabe der Verarbeitungsdauer im Debug-Modus  
+
+**English:**  
+- Multithreaded file scanning for maximum speed  
+- Hash-based duplicate detection  
+- Outputs duplicates in a neatly formatted text file  
+- Supports recursive directory scanning  
+- Displays processing time in debug mode  
 
 ---
 
-## 💻 **Systemanforderungen / System Requirements**
+## 💻 Systemanforderungen / System Requirements  
 
-- **Betriebssystem / Operating System:** Windows 8, 10, 11  
-- **Compiler:** MSVC mit Toolset v143  
-- **C++ Standard:** C++17 oder neuer  
+- Windows 8, 10, 11  
+- Visual Studio 2022 mit Toolset **v143**  
+- C++17 oder neuer  
 
 ---
 
-## 📦 **Installation und Verwendung / Installation and Usage**
+## ⚙️ Installation und Ausführung / Installation and Usage  
 
-1. **Projekt kompilieren / Compile the Project:**  
-   Öffne das Projekt in Visual Studio und stelle sicher, dass das v143 Toolset ausgewählt ist.  
-   Select the v143 toolset in Visual Studio and build the project.
-
-2. **Programm starten / Run the Program:**  
+**Deutsch:**  
+1. Klone das Repository oder lade es herunter:  
+   ```sh
+   git clone https://github.com/M2tecDev/DuplicateFinder.git
+   ```
+2. Öffne das Projekt in **Visual Studio 2022**.  
+3. Baue das Projekt im **Release-Modus**.  
+4. Starte das Programm:  
+   ```sh
+   DuplicateFinder.exe [Pfad]
+   ```
    - Ohne Parameter: Scannt das aktuelle Verzeichnis.  
-     ```cmd
-     DuplicateFinder.exe
-     ```
-   - Mit Pfad-Parameter: Scannt das angegebene Verzeichnis.  
-     ```cmd
-     DuplicateFinder.exe "C:\Path\To\Scan"
-     ```
+   - Mit Parameter: Scannt das angegebene Verzeichnis.  
 
-3. **Ausgabe überprüfen / Check Output:**  
-   Die Ergebnisse werden in der Datei `duplicates.txt` gespeichert.  
-   The results will be saved in the `duplicates.txt` file.
+**English:**  
+1. Clone the repository or download it:  
+   ```sh
+   git clone https://github.com/M2tecDev/DuplicateFinder.git
+   ```
+2. Open the project in **Visual Studio 2022**.  
+3. Build the project in **Release mode**.  
+4. Run the program:  
+   ```sh
+   DuplicateFinder.exe [path]
+   ```
+   - Without a parameter: Scans the current directory.  
+   - With a parameter: Scans the specified directory.  
 
 ---
 
-## 📝 **Beispielausgabe / Example Output**
+## 📊 Beispielausgabe / Example Output  
 
-**duplicates.txt**  
-```txt
-Datei: example.txt
+**Deutsch:**  
+```
+Datei: example.txt (Größe: 1.45 KB)
+ - C:\Ordner1\example.txt
+ - C:\Ordner2\example.txt
+-----------------------------
+
+Datei: image.jpg (Größe: 2.5 MB)
+ - C:\Bilder\image.jpg
+ - C:\Backup\image.jpg
+-----------------------------
+```
+
+**English:**  
+```
+File: example.txt (Size: 1.45 KB)
  - C:\Folder1\example.txt
  - C:\Folder2\example.txt
 -----------------------------
-Datei: image.jpg
- - C:\Folder\image.jpg
- - C:\Folder\backup\image.jpg
+
+File: image.jpg (Size: 2.5 MB)
+ - C:\Images\image.jpg
+ - C:\Backup\image.jpg
 -----------------------------
+```
+
+---
+
+## 📜 Lizenz / License  
+
+**Deutsch:**  
+Dieses Projekt steht unter der **MIT-Lizenz**. Weitere Informationen findest du in der Datei [LICENSE](LICENSE).  
+
+**English:**  
+This project is licensed under the **MIT License**. See the [LICENSE](LICENSE) file for details.  
+
+---
+
+## 🤝 Beitrag / Contributing  
+
+**Deutsch:**  
+Beiträge sind willkommen! Bitte erstelle einen **Pull-Request** oder öffne ein **Issue**, um Änderungen vorzuschlagen.  
+
+**English:**  
+Contributions are welcome! Please create a **Pull Request** or open an **Issue** to suggest changes.  
+
+---
+
+## 📬 Kontakt / Contact  
+
+**Entwickler / Developer:** [M2tecDev](https://github.com/M2tecDev)  
+**Repository:** [DuplicateFinder](https://github.com/M2tecDev/DuplicateFinder)  
